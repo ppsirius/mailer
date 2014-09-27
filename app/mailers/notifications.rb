@@ -6,9 +6,9 @@ class Notifications < ActionMailer::Base
   #
   #   en.notifications.hello.subject
   #
-  def hello
+  def hello(email)
     @greeting = "Hi"
 
-    mail to: "ppsirius@gmail.com"
+    mail to: email
   end
 end
