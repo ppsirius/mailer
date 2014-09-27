@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :send_email]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :send_email, :send_code]
 
   # GET /users
   # GET /users.json
@@ -66,6 +66,11 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def send_code
+    Code.hello(@user).deliver
+    redirect_to root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -74,6 +79,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email)
+      params.require(:user).permit(:email, :name, :code)
     end
 end

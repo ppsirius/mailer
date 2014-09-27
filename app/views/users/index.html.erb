@@ -3,19 +3,23 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Email</th>
-      <th colspan="4"></th>
+      <th>Code</th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><%= user.code %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= button_to 'Send', send_email_user_path(user) %></td>
+        <td><%= button_to 'Send', send_code_user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
