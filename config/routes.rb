@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do 
       post :send_email
       post :send_code
+      post :confirmation_email
     end
 
   end
